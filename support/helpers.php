@@ -526,3 +526,22 @@ function input(string $param = null, $default = null)
 {
     return is_null($param) ? request()->all() : request()->input($param, $default);
 }
+
+function issetNotEmpty(array $array, $key): bool
+{
+    return !empty($array[$key]);
+}
+
+function getUnsetFieldValue(array $map, $key, $default = '')
+{
+    return issetNotEmpty($map, $key) ? $map[$key] : $default;
+}
+
+function getMappingValue(array $map, $key, $field, $default = '')
+{
+    if (issetNotEmpty($map, $key) && issetNotEmpty($map[$key], $field)) {
+        return $map[$key][$field];
+    }
+
+    return $default;
+}

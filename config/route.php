@@ -14,6 +14,16 @@
 
 use Webman\Route;
 
+Route::group('/v1', function () {
+    // 登录相关
+    Route::post('/login', [\app\controller\api\LoginController::class, 'login']);
+
+    Route::group('/user', function () {
+        Route::get('/hello', [\app\controller\UserController::class, 'hello']);
+    });
+});
+
+Route::disableDefaultRoute();
 
 
 

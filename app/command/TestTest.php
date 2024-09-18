@@ -2,6 +2,7 @@
 
 namespace app\command;
 
+use app\model\TagModel;
 use support\Db;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -31,7 +32,8 @@ class TestTest extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
 
-        $rows = Db::table('company')->get();
+//        $rows = Db::table('company')->get();
+        $rows = TagModel::query()->get();
 
         dd($rows->toArray());
 

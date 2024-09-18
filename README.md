@@ -56,4 +56,17 @@ php windows.php
 
 # install package
 composer require webman/console
+
+# install database
+composer require -W illuminate/database illuminate/pagination illuminate/events symfony/var-dumper laravel/serializable-closure
+# install thinkOrm
+composer require -W webman/think-orm
+# install redis package
+composer require -W illuminate/redis illuminate/events
+# install cache
+composer require -W symfony/cache
+# install env
+composer require vlucas/phpdotenv
+# install laravel-validation
+composer require webman-tech/laravel-validation
 ```

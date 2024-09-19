@@ -16,7 +16,7 @@ class ApiBaseController
         ]);
     }
 
-    public function error($msg = 'failure', $code = ResponseConst::CODE_ERROR, $data = []): Response
+    public function fail($msg = 'failure', $code = ResponseConst::CODE_ERROR, $data = []): Response
     {
         return json([
             'code' => $code,

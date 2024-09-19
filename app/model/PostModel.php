@@ -38,6 +38,7 @@ class PostModel extends Model
      */
     public $timestamps = false;
 
+    protected $guarded = [];
     const TYPE_COMPANY = 1;
     const TYPE_ISSUE   = 2;
 

@@ -102,7 +102,7 @@ CREATE TABLE `v0_user`
 (
     `id`         INT(11)      NOT NULL AUTO_INCREMENT,
     `username`   VARCHAR(50)  NOT NULL UNIQUE COMMENT '用户名',
-    `status`     TINYINT(4)   NOT NULL COMMENT '用户状态 1-正常 2-禁用',
+    `status`     TINYINT(4)   NOT NULL DEFAULT 1 COMMENT '用户状态 1-正常 2-禁用',
     `email`      VARCHAR(100) NOT NULL UNIQUE COMMENT '邮箱',
     `head_img`   VARCHAR(255) NOT NULL DEFAULT '' COMMENT '头像',
     `phone`      VARCHAR(11)  NOT NULL UNIQUE COMMENT '手机号',

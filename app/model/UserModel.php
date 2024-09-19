@@ -36,6 +36,7 @@ class UserModel extends Model
      * @var bool
      */
     public $timestamps = false;
-    
+
+    const SYS_ADMIN = 1;    # 系统管理员
     
 }

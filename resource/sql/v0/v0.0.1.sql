@@ -117,5 +117,8 @@ CREATE TABLE `v0_user`
 
 ALTER TABLE `v0_post` DROP INDEX `slug`;
 
+ALTER TABLE `v0_post_comment`
+    ADD COLUMN `reply_user_id` int(11) NOT NULL COMMENT '回复的用户ID' AFTER `comment_id`;
+
 
 

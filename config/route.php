@@ -13,6 +13,7 @@
  */
 
 use app\controller\api\LoginController;
+use app\controller\api\post\PostCommentController;
 use app\controller\api\post\PostController;
 use app\controller\UserController;
 use Webman\Route;
@@ -33,6 +34,10 @@ Route::group('/v1', function () {
         Route::post('/create', [PostController::class, 'create']);
         Route::post('/update', [PostController::class, 'update']);
         Route::post('/delete', [PostController::class, 'delete']);
+        // 文章评论
+        Route::group('/comment', function () {
+            Route::get('/list', [PostCommentController::class, 'list']);
+        });
     });
 });
 

@@ -5,12 +5,25 @@ namespace app\controller\api\post;
 use app\controller\api\ApiBaseController;
 use app\model\PostModel;
 use support\Request;
+use support\Response;
 
 class PostController extends ApiBaseController
 {
-    public function list(Request $request)
+    /**
+     * 分页
+     * @param Request $request
+     * @return Response
+     */
+    public function list(Request $request): Response
     {
-        return $this->success();
+        $params   = $request->get();
+        $page     = getUnsetFieldValue($params, 'page', 1);
+        $pageSize = getUnsetFieldValue($params, 'pageSize', 10);
+
+        $params['status'] = PostModel::STATUS_PUBLISHED;
+        $list             = PostModel::getPageList($params, $page, $pageSize);
+
+        return $this->success($list);
     }
 
     public function detail(Request $request)

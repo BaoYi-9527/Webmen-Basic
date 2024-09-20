@@ -2,7 +2,10 @@
 
 namespace app\model;
 
+use app\model\modelTrait\QueryBuilderTrait;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use support\Model;
 
 /**
@@ -10,6 +13,8 @@ use support\Model;
  */
 class PostModel extends Model
 {
+    use QueryBuilderTrait;
+
     /**
      * The connection name for the model.
      *
@@ -55,6 +60,17 @@ class PostModel extends Model
     const IS_ORIGINAL  = 1;
     const NOT_ORIGINAL = 0;
 
+    public function company(): BelongsTo
+    {
+        return $this->belongsTo(CompanyModel::class, 'company_id', 'id');
+    }
+
+    public function author(): BelongsTo
+    {
+        return $this->belongsTo(UserModel::class, 'author_id', 'id');
+    }
+
+
     public static function createPost($params): \Illuminate\Database\Eloquent\Model|Builder
     {
         return self::query()->create([
@@ -71,6 +87,27 @@ class PostModel extends Model
             'slug'         => getUnsetFieldValue($params, 'slug'),
             'original_url' => getUnsetFieldValue($params, 'original_url'),
         ]);
+    }
+
+    public static function getPageList($condition, $page, $pageSize, $fields = ['*']): LengthAwarePaginator
+    {
+        $query = self::with([
+            'company',
+            'author:id,username,head_img,desc'
+        ])->leftJoin('post_statistics', 'post.id', '=', 'post_statistics.post_id')
+            ->selectRaw('
+            v0_post.*, 
+            COALESCE(v0_post_statistics.views, 0) AS views, 
+            COALESCE(v0_post_statistics.likes, 0) AS likes, 
+            COALESCE(v0_post_statistics.comments, 0) AS comments
+            ');
+
+        self::commonQueryBuilder($query, $condition,
+            ['type', 'status', 'is_top', 'is_original', 'company_id', 'author_id'],
+            ['title']
+        );
+
+        return $query->paginate($pageSize, $fields, 'page', $page);
     }
 
 

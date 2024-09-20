@@ -2,6 +2,7 @@
 
 namespace app\command;
 
+use app\model\PostModel;
 use app\model\TagModel;
 use support\Db;
 use Symfony\Component\Console\Command\Command;
@@ -28,12 +29,14 @@ class TestTest extends Command
      * @param InputInterface $input
      * @param OutputInterface $output
      * @return int
+     * @command php80 webman test:test
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
 
+        dd(empty(0));
 //        $rows = Db::table('company')->get();
-        $rows = TagModel::query()->get();
+        $rows = PostModel::getPageList([], 1, 10);
 
         dd($rows->toArray());
 

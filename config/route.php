@@ -27,6 +27,7 @@ Route::group('/v1', function () {
 
     Route::group('/post', function () {
         // 文章相关
+        Route::get('/filter', [PostController::class, 'filter']);
         Route::get('/list', [PostController::class, 'list']);
         Route::get('/detail', [PostController::class, 'detail']);
         Route::post('/create', [PostController::class, 'create']);

@@ -9,6 +9,14 @@ use support\Response;
 
 class PostController extends ApiBaseController
 {
+
+    public function filter(): Response
+    {
+        return $this->success([
+            'type_mapping' => array_values(PostModel::typeMapping())
+        ]);
+    }
+
     /**
      * 分页
      * @param Request $request

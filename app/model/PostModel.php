@@ -60,6 +60,20 @@ class PostModel extends Model
     const IS_ORIGINAL  = 1;
     const NOT_ORIGINAL = 0;
 
+    public static function typeMapping(): array
+    {
+        return [
+            self::TYPE_COMPANY => [
+                'id' => self::TYPE_COMPANY,
+                'name' => '推荐贴'
+            ],
+            self::TYPE_ISSUE => [
+                'id' => self::TYPE_ISSUE,
+                'name' => '灌水贴'
+            ],
+        ];
+    }
+
     public function company(): BelongsTo
     {
         return $this->belongsTo(CompanyModel::class, 'company_id', 'id');

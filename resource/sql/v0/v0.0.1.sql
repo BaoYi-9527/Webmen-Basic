@@ -59,7 +59,7 @@ CREATE TABLE `v0_post`
     `content`      TEXT                NOT NULL COMMENT '文章内容',
     `cover`        VARCHAR(255)        NOT NULL DEFAULT '' COMMENT '文章封面',
     `author_id`    INT(11)             NOT NULL DEFAULT 0 COMMENT '作者ID',
-    `slug`         VARCHAR(255) UNIQUE NOT NULL COMMENT 'seo url',
+    `slug`         VARCHAR(255)        NOT NULL COMMENT 'seo url',
     `original_url` VARCHAR(255)        NOT NULL DEFAULT '' COMMENT '原文链接',
     `created_at`   DATETIME                     DEFAULT CURRENT_TIMESTAMP,
     `updated_at`   DATETIME                     DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -114,6 +114,8 @@ CREATE TABLE `v0_user`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_general_ci COMMENT ='Users table';
+
+ALTER TABLE `v0_post` DROP INDEX `slug`;
 
 
 

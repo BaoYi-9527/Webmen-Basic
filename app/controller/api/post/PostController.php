@@ -34,12 +34,16 @@ class PostController extends ApiBaseController
         return $this->success($list);
     }
 
-    public function detail(Request $request)
+    public function detail(Request $request): Response
     {
-        return $this->success();
+        $id = $request->get('id');
+
+        $detail = PostModel::getDetail($id);
+
+        return $this->success($detail ? $detail->toArray() : []);
     }
 
-    public function create(Request $request)
+    public function create(Request $request): Response
     {
         $params = $request->post();
 
@@ -48,13 +52,17 @@ class PostController extends ApiBaseController
         return $this->success();
     }
 
-    public function update(Request $request)
+    public function update(Request $request): Response
     {
         return $this->success();
     }
 
-    public function delete(Request $request)
+    public function delete(Request $request): Response
     {
+        $id = $request->post('id');
+
+        PostModel::updateDeleteStatus($id);
+
         return $this->success();
     }
 

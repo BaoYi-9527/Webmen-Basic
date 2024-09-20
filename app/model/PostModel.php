@@ -84,6 +84,11 @@ class PostModel extends Model
         return $this->belongsTo(UserModel::class, 'author_id', 'id');
     }
 
+    public static function updateDeleteStatus($id): int
+    {
+        return self::query()->where('id', $id)->update(['status' => self::STATUS_DELETED]);
+    }
+
 
     public static function createPost($params): \Illuminate\Database\Eloquent\Model|Builder
     {
@@ -101,6 +106,20 @@ class PostModel extends Model
             'slug'         => getUnsetFieldValue($params, 'slug'),
             'original_url' => getUnsetFieldValue($params, 'original_url'),
         ]);
+    }
+
+    public static function getDetail($id): object|null
+    {
+        return self::with([
+            'company',
+            'author:id,username,head_img,desc'
+        ])->leftJoin('post_statistics', 'post.id', '=', 'post_statistics.post_id')
+            ->selectRaw('
+            v0_post.*, 
+            COALESCE(v0_post_statistics.views, 0) AS views, 
+            COALESCE(v0_post_statistics.likes, 0) AS likes, 
+            COALESCE(v0_post_statistics.comments, 0) AS comments
+            ')->where('post.id', $id)->first();
     }
 
     public static function getPageList($condition, $page, $pageSize, $fields = ['*']): LengthAwarePaginator

@@ -120,5 +120,17 @@ ALTER TABLE `v0_post` DROP INDEX `slug`;
 ALTER TABLE `v0_post_comment`
     ADD COLUMN `reply_user_id` int(11) NOT NULL COMMENT '回复的用户ID' AFTER `comment_id`;
 
+CREATE TABLE `v0_city`
+(
+    `id`         INT(11) NOT NULL AUTO_INCREMENT,
+    `name`       VARCHAR(100) NOT NULL,
+    `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT ='city';
+
+ALTER TABLE `wutong`.`v0_post`
+    ADD COLUMN `city_id` int(11) NOT NULL DEFAULT 0 COMMENT '城市ID' AFTER `company_id`;
+
 
 

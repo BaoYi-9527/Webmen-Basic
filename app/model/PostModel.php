@@ -79,6 +79,11 @@ class PostModel extends Model
         return $this->belongsTo(CompanyModel::class, 'company_id', 'id');
     }
 
+    public function city(): BelongsTo
+    {
+        return $this->belongsTo(CityModel::class, 'city_id', 'id');
+    }
+
     public function author(): BelongsTo
     {
         return $this->belongsTo(UserModel::class, 'author_id', 'id');
@@ -112,7 +117,8 @@ class PostModel extends Model
     {
         return self::with([
             'company',
-            'author:id,username,head_img,desc'
+            'author:id,username,head_img,desc',
+            'city:id,name'
         ])->leftJoin('post_statistics', 'post.id', '=', 'post_statistics.post_id')
             ->selectRaw('
             v0_post.*, 
@@ -126,7 +132,8 @@ class PostModel extends Model
     {
         $query = self::with([
             'company',
-            'author:id,username,head_img,desc'
+            'author:id,username,head_img,desc',
+            'city:id,name'
         ])->leftJoin('post_statistics', 'post.id', '=', 'post_statistics.post_id')
             ->selectRaw('
             v0_post.*, 
@@ -136,7 +143,7 @@ class PostModel extends Model
             ');
 
         self::commonQueryBuilder($query, $condition,
-            ['type', 'status', 'is_top', 'is_original', 'company_id', 'author_id'],
+            ['type', 'status', 'is_top', 'is_original', 'company_id', 'author_id', 'city_id'],
             ['title']
         );
 

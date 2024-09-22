@@ -13,6 +13,26 @@ CREATE TABLE `v0_company`
     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic COMMENT = 'company';
 
+CREATE TABLE `v0_company_attr`
+(
+    `id`         int(11) NOT NULL AUTO_INCREMENT,
+    `name`       varchar(255) NOT NULL DEFAULT '' COMMENT '属性名称',
+    `created_at` DATETIME              DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` DATETIME              DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic COMMENT = 'company_attr';
+
+CREATE TABLE `v0_company_attr_relation`
+(
+    `id`         int(11) NOT NULL AUTO_INCREMENT,
+    `company_id` int(11) NOT NULL DEFAULT 0 COMMENT '公司ID',
+    `attr_id`    int(11) NOT NULL DEFAULT 0 COMMENT '属性ID',
+    `attr_value` varchar(255) NOT NULL DEFAULT '' COMMENT '属性值',
+    `created_at` DATETIME              DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` DATETIME              DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic COMMENT = 'company_attr';
+
 CREATE TABLE v0_company_tag
 (
     `id`         INT AUTO_INCREMENT PRIMARY KEY,
@@ -142,5 +162,24 @@ CREATE TABLE `v0_city_statistics`
     `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT ='city statistics table';
+
+CREATE TABLE `v0_job`
+(
+    `id`           INT(11) NOT NULL AUTO_INCREMENT,
+    `name`         VARCHAR(100) NOT NULL,
+    `code`         VARCHAR(100) NOT NULL DEFAULT '' COMMENT '职位编码',
+    `city_id`      INT(11) NOT NULL DEFAULT 0 COMMENT '城市ID',
+    `company_id`   INT(11) NOT NULL DEFAULT 0 COMMENT '公司ID',
+    `cat_id`       INT(11) NOT NULL DEFAULT 0 COMMENT '职位类别ID',
+    `head_count`   INT(11) NOT NULL DEFAULT 0 COMMENT '招聘人数',
+    `min_salary`   INT(11) NOT NULL DEFAULT 0 COMMENT '最低薪资',
+    `max_salary`   INT(11) NOT NULL DEFAULT 0 COMMENT '最高薪资',
+    `product_line` VARCHAR(100) NOT NULL DEFAULT '' COMMENT '产品线',
+    `desc`         text         NOT NULL COMMENT '描述',
+    `created_at`   DATETIME              DEFAULT CURRENT_TIMESTAMP,
+    `updated_at`   DATETIME              DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT ='job';
+
 
 

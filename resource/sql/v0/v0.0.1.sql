@@ -132,5 +132,15 @@ CREATE TABLE `v0_city`
 ALTER TABLE `wutong`.`v0_post`
     ADD COLUMN `city_id` int(11) NOT NULL DEFAULT 0 COMMENT '城市ID' AFTER `company_id`;
 
+CREATE TABLE `v0_city_statistics`
+(
+    `id`         INT(11) NOT NULL AUTO_INCREMENT,
+    `city_id`    INT(11) NOT NULL,
+    `post_count` INT(11) DEFAULT 0 COMMENT '帖子数',
+    `hot_count`  INT(11) DEFAULT 0 COMMENT '热度数',
+    `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT ='city statistics table';
 
 

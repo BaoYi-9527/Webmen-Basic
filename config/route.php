@@ -12,6 +12,7 @@
  * @license   http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
+use app\controller\api\city\CityController;
 use app\controller\api\LoginController;
 use app\controller\api\post\PostCommentController;
 use app\controller\api\post\PostController;
@@ -22,12 +23,19 @@ Route::group('/v1', function () {
     // 登录相关
     Route::post('/login', [LoginController::class, 'login']);
 
+    // 用户相关
     Route::group('/user', function () {
         Route::get('/hello', [UserController::class, 'hello']);
     });
 
+    // 城市相关
+    Route::group('/city', function () {
+        // 城市数据统计
+        Route::get('/statistics', [CityController::class, 'statistics']);
+    });
+
+    // 文章相关
     Route::group('/post', function () {
-        // 文章相关
         Route::get('/filter', [PostController::class, 'filter']);
         Route::get('/list', [PostController::class, 'list']);
         Route::get('/detail', [PostController::class, 'detail']);

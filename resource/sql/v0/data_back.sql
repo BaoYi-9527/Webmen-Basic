@@ -16,3 +16,18 @@ INSERT INTO `wutong`.`v0_city` (`name`, `created_at`, `updated_at`) VALUES ('苏
 INSERT INTO `wutong`.`v0_city` (`name`, `created_at`, `updated_at`) VALUES ('重庆', '2024-09-22 20:04:09', '2024-09-22 20:04:09');
 INSERT INTO `wutong`.`v0_city` (`name`, `created_at`, `updated_at`) VALUES ('珠海', '2024-09-22 20:04:09', '2024-09-22 20:04:09');
 
+INSERT INTO `wutong`.`v0_city_statistics` (`city_id`, `post_count`, `hot_count`, `created_at`, `updated_at`) VALUES (1, 109, 10, '2024-09-22 20:25:20', '2024-09-22 20:25:20');
+INSERT INTO `wutong`.`v0_city_statistics` (`city_id`, `post_count`, `hot_count`, `created_at`, `updated_at`) VALUES (2, 109, 10, '2024-09-22 20:25:20', '2024-09-22 20:25:20');
+INSERT INTO `wutong`.`v0_city_statistics` (`city_id`, `post_count`, `hot_count`, `created_at`, `updated_at`) VALUES (3, 109, 10, '2024-09-22 20:25:20', '2024-09-22 20:25:20');
+INSERT INTO `wutong`.`v0_city_statistics` (`city_id`, `post_count`, `hot_count`, `created_at`, `updated_at`) VALUES (4, 109, 10, '2024-09-22 20:25:20', '2024-09-22 20:25:20');
+INSERT INTO `wutong`.`v0_city_statistics` (`city_id`, `post_count`, `hot_count`, `created_at`, `updated_at`) VALUES (5, 109, 10, '2024-09-22 20:25:20', '2024-09-22 20:25:20');
+INSERT INTO `wutong`.`v0_city_statistics` (`city_id`, `post_count`, `hot_count`, `created_at`, `updated_at`) VALUES (6, 109, 10, '2024-09-22 20:25:20', '2024-09-22 20:25:20');
+INSERT INTO `wutong`.`v0_city_statistics` (`city_id`, `post_count`, `hot_count`, `created_at`, `updated_at`) VALUES (7, 109, 10, '2024-09-22 20:25:20', '2024-09-22 20:25:20');
+INSERT INTO `wutong`.`v0_city_statistics` (`city_id`, `post_count`, `hot_count`, `created_at`, `updated_at`) VALUES (8, 109, 10, '2024-09-22 20:25:20', '2024-09-22 20:25:20');
+INSERT INTO `wutong`.`v0_city_statistics` (`city_id`, `post_count`, `hot_count`, `created_at`, `updated_at`) VALUES (9, 109, 10, '2024-09-22 20:25:20', '2024-09-22 20:25:20');
+INSERT INTO `wutong`.`v0_city_statistics` (`city_id`, `post_count`, `hot_count`, `created_at`, `updated_at`) VALUES (10, 109, 10, '2024-09-22 20:25:20', '2024-09-22 20:25:20');
+INSERT INTO `wutong`.`v0_city_statistics` (`city_id`, `post_count`, `hot_count`, `created_at`, `updated_at`) VALUES (11, 109, 10, '2024-09-22 20:25:20', '2024-09-22 20:25:20');
+INSERT INTO `wutong`.`v0_city_statistics` (`city_id`, `post_count`, `hot_count`, `created_at`, `updated_at`) VALUES (12, 109, 10, '2024-09-22 20:25:20', '2024-09-22 20:25:20');
+INSERT INTO `wutong`.`v0_city_statistics` (`city_id`, `post_count`, `hot_count`, `created_at`, `updated_at`) VALUES (13, 109, 10, '2024-09-22 20:25:20', '2024-09-22 20:25:20');
+INSERT INTO `wutong`.`v0_city_statistics` (`city_id`, `post_count`, `hot_count`, `created_at`, `updated_at`) VALUES (14, 109, 10, '2024-09-22 20:25:20', '2024-09-22 20:25:20');
+

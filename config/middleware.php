@@ -12,4 +12,10 @@
  * @license   http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-return [];
+use app\middleware\CorsMiddleware;
+
+return [
+    '' => [
+        CorsMiddleware::class,
+    ]
+];

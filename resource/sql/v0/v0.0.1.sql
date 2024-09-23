@@ -33,6 +33,20 @@ CREATE TABLE `v0_company_attr_relation`
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic COMMENT = 'company_attr';
 
+CREATE TABLE `v0_company_statistics`
+(
+    `id`         int(11) NOT NULL AUTO_INCREMENT,
+    `company_id` int(11) NOT NULL DEFAULT 0 COMMENT '公司ID',
+    `post_count` int(11) NOT NULL DEFAULT 0 COMMENT '帖子数',
+    `month_post_count` int(11) NOT NULL DEFAULT 0 COMMENT '本月帖子数',
+    `hot`        int(11) NOT NULL DEFAULT 0 COMMENT '热度',
+    `like_count` int(11) NOT NULL DEFAULT 0 COMMENT '点赞数',
+    `dislike_count` int(11) NOT NULL DEFAULT 0 COMMENT '点踩数',
+    `created_at` DATETIME              DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` DATETIME              DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic COMMENT = 'company_statistics';
+
 CREATE TABLE v0_company_tag
 (
     `id`         INT AUTO_INCREMENT PRIMARY KEY,

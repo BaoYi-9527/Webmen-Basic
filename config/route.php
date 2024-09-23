@@ -13,10 +13,11 @@
  */
 
 use app\controller\api\city\CityController;
+use app\controller\api\company\CompanyController;
 use app\controller\api\LoginController;
 use app\controller\api\post\PostCommentController;
 use app\controller\api\post\PostController;
-use app\controller\UserController;
+use app\controller\api\user\UserController;
 use Webman\Route;
 
 Route::group('/v1', function () {
@@ -25,13 +26,18 @@ Route::group('/v1', function () {
 
     // 用户相关
     Route::group('/user', function () {
-        Route::get('/hello', [UserController::class, 'hello']);
+        Route::get('/hot-rank', [UserController::class, 'hotRank']);
     });
 
     // 城市相关
     Route::group('/city', function () {
         // 城市数据统计
         Route::get('/statistics', [CityController::class, 'statistics']);
+    });
+
+    // 公司相关
+    Route::group('/company', function () {
+        Route::get('/hot-rank', [CompanyController::class, 'hotRank']);
     });
 
     // 文章相关

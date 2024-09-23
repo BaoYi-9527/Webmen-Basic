@@ -65,5 +65,28 @@ class PostCommentModel extends Model
 
         return $query->orderByDesc('is_top')->orderBy('id')->paginate($pageSize, $fields, 'page', $page);
     }
+
+    public static function publish($params)
+    {
+        $commentId     = getUnsetFieldValue($params, 'comment_id', 0);
+        $rootCommentId = $replyUserId = 0;
+        if ($commentId) {
+            $replyComment  = self::find($commentId);
+            $replyUserId   = $replyComment->user_id;
+            $rootCommentId = $replyComment->root_comment_id ? $replyComment->root_comment_id : $commentId;
+        }
+
+        return self::query()->create([
+            'post_id'         => $params['post_id'],
+            'user_id'         => $params['user_id'],
+            'content'         => $params['content'],
+            'comment_id'      => $commentId,
+            'reply_user_id'   => $replyUserId,
+            'root_comment_id' => $rootCommentId,
+            'status'          => self::STATUS_VALID
+        ]);
+    }
+
+
     
 }

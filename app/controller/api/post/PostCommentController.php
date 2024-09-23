@@ -23,4 +23,29 @@ class PostCommentController extends ApiBaseController
 
         return $this->success($list);
     }
+
+    public function create(Request $request)
+    {
+        $postId    = $request->get('post_id');
+        $content   = $request->get('content');
+        $commentId = $request->get('comment_id', 0);
+
+        PostCommentModel::publish([
+            'post_id'    => $postId,
+            'user_id'    => 1,
+            'content'    => $content,
+            'comment_id' => $commentId
+        ]);
+
+        return $this->success();
+    }
+
+    public function delete(Request $request)
+    {
+        $id = $request->get('id');
+
+        PostCommentModel::where('id', $id)->update(['status' => PostCommentModel::STATUS_DELETE]);
+
+        return $this->success();
+    }
 }

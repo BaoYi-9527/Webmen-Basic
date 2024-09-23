@@ -102,6 +102,9 @@ CREATE TABLE `v0_post`
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_general_ci COMMENT ='Posts table';
 
+ALTER TABLE `v0_post`
+    ADD COLUMN `city_id` int(11) NOT NULL DEFAULT 0 COMMENT '城市ID' AFTER `company_id`;
+
 CREATE TABLE `v0_post_statistics`
 (
     `id`         INT(11) NOT NULL AUTO_INCREMENT,
@@ -132,6 +135,17 @@ CREATE TABLE `v0_post_comment`
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_general_ci COMMENT ='Post Comments table';
 
+ALTER TABLE `v0_post_comment`
+    MODIFY COLUMN `comment_id` int(11) NOT NULL DEFAULT 0 COMMENT '回复的评论ID, 0 为根评论' AFTER `user_id`,
+    ADD COLUMN `root_comment_id` int(11) NOT NULL COMMENT '根评论ID，0 为根评论' AFTER `comment_id`;
+
+ALTER TABLE `v0_post_comment`
+    ADD COLUMN `like_count` int(11) NOT NULL DEFAULT 0 COMMENT '点赞数' AFTER `content`,
+    ADD COLUMN `dislike_count` int(11) NOT NULL DEFAULT 0 COMMENT '反对数' AFTER `like_count`;
+
+ALTER TABLE `v0_post_comment`
+    ADD COLUMN `reply_user_id` int(11) NOT NULL COMMENT '回复的用户ID' AFTER `comment_id`;
+
 CREATE TABLE `v0_user`
 (
     `id`         INT(11)      NOT NULL AUTO_INCREMENT,
@@ -151,9 +165,6 @@ CREATE TABLE `v0_user`
 
 ALTER TABLE `v0_post` DROP INDEX `slug`;
 
-ALTER TABLE `v0_post_comment`
-    ADD COLUMN `reply_user_id` int(11) NOT NULL COMMENT '回复的用户ID' AFTER `comment_id`;
-
 CREATE TABLE `v0_city`
 (
     `id`         INT(11) NOT NULL AUTO_INCREMENT,
@@ -162,9 +173,6 @@ CREATE TABLE `v0_city`
     `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT ='city';
-
-ALTER TABLE `wutong`.`v0_post`
-    ADD COLUMN `city_id` int(11) NOT NULL DEFAULT 0 COMMENT '城市ID' AFTER `company_id`;
 
 CREATE TABLE `v0_city_statistics`
 (

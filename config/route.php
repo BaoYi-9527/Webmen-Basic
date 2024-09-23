@@ -51,6 +51,8 @@ Route::group('/v1', function () {
         // 文章评论
         Route::group('/comment', function () {
             Route::get('/list', [PostCommentController::class, 'list']);
+            Route::post('/create', [PostCommentController::class, 'create']);
+            Route::post('/delete', [PostCommentController::class, 'delete']);
         });
     });
 });

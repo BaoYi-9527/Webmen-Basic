@@ -37,6 +37,8 @@ class UserModel extends Model
      */
     public $timestamps = false;
 
+    protected $guarded = [];
+
     const SYS_ADMIN = 1;    # 系统管理员
     
 }

@@ -163,6 +163,15 @@ CREATE TABLE `v0_user`
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_general_ci COMMENT ='Users table';
 
+ALTER TABLE `v0_user`
+    ADD COLUMN `token` varchar(255) NOT NULL DEFAULT '' COMMENT '当前登陆 token' AFTER `desc`,
+    ADD COLUMN `ip` varchar(50) NOT NULL COMMENT '登陆IP' AFTER `token`,
+    ADD COLUMN `last_login_time` datetime NOT NULL COMMENT '上次登陆时间' AFTER `login_ip`;
+
+ALTER TABLE `v0_user`
+    MODIFY COLUMN `phone` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '手机号' AFTER `head_img`,
+    DROP INDEX `phone`;
+
 ALTER TABLE `v0_post` DROP INDEX `slug`;
 
 CREATE TABLE `v0_city`

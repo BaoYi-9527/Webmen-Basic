@@ -23,6 +23,8 @@ use Webman\Route;
 Route::group('/v1', function () {
     // 登录相关
     Route::post('/login', [LoginController::class, 'login']);
+    Route::post('/register', [LoginController::class, 'register']);
+    Route::post('/register-code', [LoginController::class, 'registerCode']);
 
     // 用户相关
     Route::group('/user', function () {

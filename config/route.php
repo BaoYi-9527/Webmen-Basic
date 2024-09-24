@@ -18,6 +18,7 @@ use app\controller\api\LoginController;
 use app\controller\api\post\PostCommentController;
 use app\controller\api\post\PostController;
 use app\controller\api\user\UserController;
+use app\middleware\AuthMiddleware;
 use Webman\Route;
 
 Route::group('/v1', function () {
@@ -25,7 +26,9 @@ Route::group('/v1', function () {
     Route::post('/login', [LoginController::class, 'login']);
     Route::post('/register', [LoginController::class, 'register']);
     Route::post('/register-code', [LoginController::class, 'registerCode']);
+});
 
+Route::group('/v1', function () {
     // 用户相关
     Route::group('/user', function () {
         Route::get('/hot-rank', [UserController::class, 'hotRank']);
@@ -57,7 +60,9 @@ Route::group('/v1', function () {
             Route::post('/delete', [PostCommentController::class, 'delete']);
         });
     });
-});
+})->middleware([
+    AuthMiddleware::class
+]);
 
 Route::disableDefaultRoute();
 

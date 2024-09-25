@@ -2,6 +2,8 @@
 
 namespace app\middleware;
 
+use support\exception\BusinessException;
+use Tinywan\Jwt\Exception\JwtTokenException;
 use Tinywan\Jwt\JwtToken;
 use Webman\Http\Request;
 use Webman\Http\Response;
@@ -17,7 +19,7 @@ class AuthMiddleware implements MiddlewareInterface
     {
         $userId = JwtToken::getCurrentId();
 
-        var_dump($userId);
+        var_dump($userId ?? 0);
 
         return $handler($request);
     }

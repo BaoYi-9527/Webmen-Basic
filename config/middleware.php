@@ -18,8 +18,5 @@ use app\middleware\CorsMiddleware;
 return [
     '' => [
         CorsMiddleware::class,
-    ],
-    'api' => [
-        AuthMiddleware::class,
-    ],
+    ]
 ];

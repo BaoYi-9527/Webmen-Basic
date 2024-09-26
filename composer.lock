@@ -1501,16 +1501,16 @@
         },
         {
             "name": "laravel/serializable-closure",
-            "version": "v1.3.3",
+            "version": "v1.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/serializable-closure.git",
-                "reference": "3dbf8a8e914634c48d389c1234552666b3d43754"
+                "reference": "61b87392d986dc49ad5ef64e75b1ff5fee24ef81"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/serializable-closure/zipball/3dbf8a8e914634c48d389c1234552666b3d43754",
-                "reference": "3dbf8a8e914634c48d389c1234552666b3d43754",
+                "url": "https://api.github.com/repos/laravel/serializable-closure/zipball/61b87392d986dc49ad5ef64e75b1ff5fee24ef81",
+                "reference": "61b87392d986dc49ad5ef64e75b1ff5fee24ef81",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1523,10 +1523,11 @@
                 "php": "^7.3|^8.0"
             },
             "require-dev": {
-                "nesbot/carbon": "^2.61",
+                "illuminate/support": "^8.0|^9.0|^10.0|^11.0",
+                "nesbot/carbon": "^2.61|^3.0",
                 "pestphp/pest": "^1.21.3",
                 "phpstan/phpstan": "^1.8.2",
-                "symfony/var-dumper": "^5.4.11"
+                "symfony/var-dumper": "^5.4.11|^6.2.0|^7.0.0"
             },
             "type": "library",
             "extra": {
@@ -1563,7 +1564,7 @@
                 "issues": "https://github.com/laravel/serializable-closure/issues",
                 "source": "https://github.com/laravel/serializable-closure"
             },
-            "time": "2023-11-08T14:08:06+00:00"
+            "time": "2024-08-02T07:48:17+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -4243,16 +4244,16 @@
         },
         {
             "name": "webman/console",
-            "version": "v1.3.4",
+            "version": "v1.3.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webman-php/console.git",
-                "reference": "ee50a1eca292eea5bf70661aa2ef722e1294814c"
+                "reference": "cf7812603114c97bfdeb7d8e3e6eabe567357d77"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webman-php/console/zipball/ee50a1eca292eea5bf70661aa2ef722e1294814c",
-                "reference": "ee50a1eca292eea5bf70661aa2ef722e1294814c",
+                "url": "https://api.github.com/repos/webman-php/console/zipball/cf7812603114c97bfdeb7d8e3e6eabe567357d77",
+                "reference": "cf7812603114c97bfdeb7d8e3e6eabe567357d77",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -4298,7 +4299,7 @@
                 "source": "https://github.com/webman-php/console",
                 "wiki": "http://www.workerman.net/doc/webman"
             },
-            "time": "2024-01-23T03:25:23+00:00"
+            "time": "2024-09-24T06:37:05+00:00"
         },
         {
             "name": "webman/think-orm",

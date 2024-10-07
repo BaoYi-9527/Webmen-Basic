@@ -17,9 +17,9 @@ class AuthMiddleware implements MiddlewareInterface
      */
     public function process(Request $request, callable $handler): Response
     {
-        $userId = JwtToken::getCurrentId();
+//        $userId = JwtToken::getCurrentId();
 
-        var_dump($userId ?? 0);
+//        var_dump($userId ?? 0);
 
         return $handler($request);
     }

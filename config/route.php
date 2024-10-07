@@ -61,7 +61,7 @@ Route::group('/v1', function () {
         });
     });
 })->middleware([
-    AuthMiddleware::class
+    AuthMiddleware::class,
 ]);
 
 Route::disableDefaultRoute();

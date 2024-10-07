@@ -37,5 +37,13 @@ class CompanyStatisticsModel extends Model
      */
     public $timestamps = false;
     
-    
+    public function company()
+    {
+        return $this->belongsTo(CompanyModel::class, 'company_id', 'id');
+    }
+
+    public static function getHotRank($orderField = 'post_count', $sort = 'desc')
+    {
+        return self::with(['company:id,name,desc,logo_url'])->orderBy($orderField, $sort)->get()->toArray();
+    }
 }

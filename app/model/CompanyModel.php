@@ -36,6 +36,6 @@ class CompanyModel extends Model
      * @var bool
      */
     public $timestamps = true;
-    
-    
+
+
 }

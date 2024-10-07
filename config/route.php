@@ -38,11 +38,14 @@ Route::group('/v1', function () {
     Route::group('/city', function () {
         // 城市数据统计
         Route::get('/statistics', [CityController::class, 'statistics']);
+        // 城市 select
+        Route::get('/select', [CityController::class, 'select']);
     });
 
     // 公司相关
     Route::group('/company', function () {
         Route::get('/hot-rank', [CompanyController::class, 'hotRank']);
+        Route::get('/select', [CompanyController::class, 'select']);
     });
 
     // 文章相关

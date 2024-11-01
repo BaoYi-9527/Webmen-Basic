@@ -12,18 +12,6 @@ class PostCommentModel extends Model
 {
     use QueryBuilderTrait;
 
-    /**
-     * The connection name for the model.
-     *
-     * @var string|null
-     */
-    protected $connection = 'mysql';
-    
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
     protected $table = 'post_comment';
 
     const STATUS_VALID  = 1;

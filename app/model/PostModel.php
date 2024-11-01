@@ -9,41 +9,34 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use support\Model;
 
 /**
+ * Class PostModel
+ * @property int $id
+ * @property int $type
+ * @property int $status
+ * @property int $is_top
+ * @property int $is_original
+ * @property int $company_id
+ * @property int $city_id
+ * @property string $title
+ * @property string $desc
+ * @property string $content
+ * @property string $cover
+ * @property int $author_id
+ * @property string slug
  *
  */
 class PostModel extends Model
 {
     use QueryBuilderTrait;
 
-    /**
-     * The connection name for the model.
-     *
-     * @var string|null
-     */
-    protected $connection = 'mysql';
-
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
     protected $table = 'post';
-
-    /**
-     * The primary key associated with the table.
-     *
-     * @var string
-     */
-    protected $primaryKey = 'id';
-
-    /**
-     * Indicates if the model should be timestamped.
-     *
-     * @var bool
-     */
-    public $timestamps = false;
-
     protected $guarded = [];
+
+    protected $casts = [
+        'created_at' => 'datetime:Y-m-d H:i:s',
+        'updated_at' => 'datetime:Y-m-d H:i:s',
+    ];
+
     const TYPE_COMPANY = 1;
     const TYPE_ISSUE   = 2;
 

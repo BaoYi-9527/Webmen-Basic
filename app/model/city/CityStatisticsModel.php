@@ -1,9 +1,8 @@
 <?php
 
-namespace app\model;
+namespace app\model\city;
 
 use support\Model;
-use support\view\Raw;
 
 /**
  *

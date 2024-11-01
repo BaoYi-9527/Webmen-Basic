@@ -3,7 +3,7 @@
 namespace app\controller\api\post;
 
 use app\controller\api\ApiBaseController;
-use app\model\PostCommentModel;
+use app\model\post\PostCommentModel;
 use support\Request;
 use support\Response;
 

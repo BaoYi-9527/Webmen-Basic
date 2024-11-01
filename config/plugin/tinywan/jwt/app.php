@@ -1,6 +1,6 @@
 <?php
 
-use app\model\UserModel;
+use app\model\user\UserModel;
 
 return [
     'enable' => true,

@@ -3,8 +3,8 @@
 namespace app\controller\api\company;
 
 use app\controller\api\ApiBaseController;
-use app\model\CompanyModel;
-use app\model\CompanyStatisticsModel;
+use app\model\company\CompanyModel;
+use app\model\company\CompanyStatisticsModel;
 use support\Request;
 
 class CompanyController extends ApiBaseController

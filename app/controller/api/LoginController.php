@@ -2,7 +2,7 @@
 
 namespace app\controller\api;
 
-use app\model\UserModel;
+use app\model\user\UserModel;
 use app\service\JwtService;
 use Illuminate\Support\Carbon;
 use support\Request;

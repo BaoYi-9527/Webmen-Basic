@@ -212,5 +212,13 @@ CREATE TABLE `v0_job`
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT ='job';
 
-
-
+CREATE TABLE `v0_user_post_action`
+(
+    `id`         INT(11) NOT NULL AUTO_INCREMENT,
+    `user_id`    INT(11) NOT NULL,
+    `post_id`    INT(11) NOT NULL,
+    `type`       TINYINT(4) NOT NULL COMMENT '动作类型 1-点赞 2-踩 3-收藏 4-关注',
+    `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT ='用户文章行为记录表';

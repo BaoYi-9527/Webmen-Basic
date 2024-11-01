@@ -1,8 +1,11 @@
 <?php
 
-namespace app\model;
+namespace app\model\post;
 
+use app\model\city\CityModel;
+use app\model\company\CompanyModel;
 use app\model\modelTrait\QueryBuilderTrait;
+use app\model\user\UserModel;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

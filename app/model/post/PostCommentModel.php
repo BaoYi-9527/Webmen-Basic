@@ -1,8 +1,9 @@
 <?php
 
-namespace app\model;
+namespace app\model\post;
 
 use app\model\modelTrait\QueryBuilderTrait;
+use app\model\user\UserModel;
 use support\Model;
 
 /**

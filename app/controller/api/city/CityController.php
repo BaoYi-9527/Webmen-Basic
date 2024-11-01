@@ -3,8 +3,8 @@
 namespace app\controller\api\city;
 
 use app\controller\api\ApiBaseController;
-use app\model\CityModel;
-use app\model\CityStatisticsModel;
+use app\model\city\CityModel;
+use app\model\city\CityStatisticsModel;
 use support\Request;
 
 class CityController extends ApiBaseController

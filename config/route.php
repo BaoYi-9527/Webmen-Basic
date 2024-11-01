@@ -24,13 +24,16 @@ use Webman\Route;
 Route::group('/v1', function () {
     // 登录相关
     Route::post('/login', [LoginController::class, 'login']);
+    // 注册
     Route::post('/register', [LoginController::class, 'register']);
+    // 注册的验证码
     Route::post('/register-code', [LoginController::class, 'registerCode']);
 });
 
 Route::group('/v1', function () {
     // 用户相关
     Route::group('/user', function () {
+        // 热度排行版
         Route::get('/hot-rank', [UserController::class, 'hotRank']);
     });
 
@@ -44,22 +47,33 @@ Route::group('/v1', function () {
 
     // 公司相关
     Route::group('/company', function () {
+        // 热度排行榜
         Route::get('/hot-rank', [CompanyController::class, 'hotRank']);
+        // 下拉接口
         Route::get('/select', [CompanyController::class, 'select']);
     });
 
     // 文章相关
     Route::group('/post', function () {
+        // 查询参数接口
         Route::get('/filter', [PostController::class, 'filter']);
+        // 文章列表
         Route::get('/list', [PostController::class, 'list']);
+        // 文章详情
         Route::get('/detail', [PostController::class, 'detail']);
+        // 创建文章
         Route::post('/create', [PostController::class, 'create']);
+        // 更新文章
         Route::post('/update', [PostController::class, 'update']);
+        // 删除文章
         Route::post('/delete', [PostController::class, 'delete']);
         // 文章评论
         Route::group('/comment', function () {
+            // 文章评论列表
             Route::get('/list', [PostCommentController::class, 'list']);
+            // 发布文章评论
             Route::post('/create', [PostCommentController::class, 'create']);
+            // 删除文章评论
             Route::post('/delete', [PostCommentController::class, 'delete']);
         });
     });

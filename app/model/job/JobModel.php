@@ -1,6 +1,6 @@
 <?php
 
-namespace app\model;
+namespace app\model\job;
 
 use support\Model;
 
@@ -15,7 +15,7 @@ class JobModel extends Model
      * @var string|null
      */
     protected $connection = 'mysql';
-    
+
     /**
      * The table associated with the model.
      *

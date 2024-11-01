@@ -11,6 +11,10 @@ use Webman\Http\Response;
 
 class Handler extends ExceptionHandler
 {
+    /**
+     * @param Throwable $exception
+     * @return void
+     */
     public function report(Throwable $exception)
     {
         parent::report($exception);
@@ -18,9 +22,8 @@ class Handler extends ExceptionHandler
 
     public function render(Request $request, Throwable $exception): Response
     {
-        if (($exception instanceof BusinessException) && ($response = $exception->render($request))) {
-            return $response;
-        } elseif ($exception instanceof JwtTokenException) {
+        $exceptionClass = get_class($exception);
+        if (str_contains(strtoupper($exceptionClass), 'JWT') || $exception instanceof BusinessException) {
             return json([
                 'code' => $exception->getCode(),
                 'msg'  => $exception->getMessage(),

@@ -25,10 +25,10 @@ class UserPostActionModel extends Model
      * 用户行为
      * @param $userId
      * @param $postId
-     * @param $type
+     * @param int $type
      * @return Builder|\Illuminate\Database\Eloquent\Model
      */
-    public static function action($userId, $postId, $type = self::TYPE_LIKE)
+    public static function action($userId, $postId, int $type = self::TYPE_LIKE)
     {
         # like 取消 dislike ; dislike 取消 like
         if ($type == self::TYPE_LIKE) {

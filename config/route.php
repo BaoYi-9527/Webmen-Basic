@@ -15,6 +15,7 @@
 use app\controller\api\city\CityController;
 use app\controller\api\company\CompanyController;
 use app\controller\api\LoginController;
+use app\controller\api\post\PostActionController;
 use app\controller\api\post\PostCommentController;
 use app\controller\api\post\PostController;
 use app\controller\api\user\UserController;
@@ -67,6 +68,17 @@ Route::group('/v1', function () {
         Route::post('/update', [PostController::class, 'update']);
         // 删除文章
         Route::post('/delete', [PostController::class, 'delete']);
+        // 文章操作
+        Route::group('/action', function () {
+            // 文章点赞
+            Route::post('/like', [PostActionController::class, 'like']);
+            // 文章踩
+            Route::post('/dislike', [PostActionController::class, 'dislike']);
+            // 文章收藏
+            Route::post('/star', [PostActionController::class, 'star']);
+            // 文章关注
+            Route::post('/watch', [PostActionController::class, 'watch']);
+        });
         // 文章评论
         Route::group('/comment', function () {
             // 文章评论列表
